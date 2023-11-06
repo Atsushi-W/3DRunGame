@@ -22,10 +22,3 @@ public class Enemy : MonoBehaviour
     }
 }
 
-// エネミーの種類
-public enum EnemyType
-{
-    Mob,
-    MiddleBoss,
-    BigBoss,
-}

@@ -5,16 +5,28 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public GameObject Bullet => _bullet;
+    public float BulletDelay => _bulletDelay;
+    public float BulletAttack => _bulletAttack;
+    public float Speed => _speed;
+
+    [Tooltip("機体から射出する弾")]
+    [SerializeField]
+    private GameObject _bullet;
+    [Tooltip("弾の発射間隔")]
+    [SerializeField]
+    private float _bulletDelay;
+    [Tooltip("弾の威力")]
+    [SerializeField]
+    private float _bulletAttack;
+    [Tooltip("機体のスピード")]
+    [SerializeField]
+    private float _speed;
 
     private MeshFilter _meshFilter;
     private MeshRenderer _meshRenderer;
     private Collider _collider;
     private Rigidbody _rigidbody;
-
-    public GameObject bullet;
-    public float bulletDelay;
-
-    public float speed;
 
     // speedを制御する
     public float moveForceMultiplier;
@@ -53,7 +65,7 @@ public class Player : MonoBehaviour
         float x = Input.GetAxisRaw("Horizontal");
 
         // 移動方向に力を加える
-        _rigidbody.AddForce(x * speed, 0, 0);
+        _rigidbody.AddForce(x * _speed, 0, 0);
         // 減速方向に力を加える
         _rigidbody.AddForce(moveForceMultiplier * -_rigidbody.velocity);
 
@@ -109,10 +121,14 @@ public class Player : MonoBehaviour
         _meshRenderer.materials = materials;
     }
 
+    /// <summary>
+    /// 弾の射出
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ShotBullet()
     {
-        Instantiate(bullet, (transform.position + (transform.forward * 10)), Quaternion.identity);
-        yield return new WaitForSeconds(bulletDelay);
+        PlayerBulletObjectPool.Instance.GetBulletObject((transform.position + (transform.forward * 10)), _bullet, _bulletAttack);
+        yield return new WaitForSeconds(_bulletDelay);
         _shotFlag = true;
     }
 

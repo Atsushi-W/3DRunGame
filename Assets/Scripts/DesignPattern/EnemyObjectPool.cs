@@ -37,6 +37,9 @@ public class EnemyObjectPool : SingletonMonoBehaviour<EnemyObjectPool>
                 Quaternion _rot = Quaternion.Euler(0, 180, 0);
                 Quaternion _q = go.transform.rotation;
                 go.transform.rotation = _q * _rot;
+                // HPÇÃê›íË
+                go.GetComponent<Enemy>().Initialize(enemy);
+
                 go.gameObject.SetActive(true);
 
                 return go;
@@ -51,6 +54,9 @@ public class EnemyObjectPool : SingletonMonoBehaviour<EnemyObjectPool>
         go.transform.rotation = q * rot;
         go.name = enemy.EnemyPrefab.name;
         go.transform.parent = transform;
+        // HPÇÃê›íË
+        go.GetComponent<Enemy>().Initialize(enemy);
+
         enemyObjects.Add(go);
 
         return go;

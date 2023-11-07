@@ -16,3 +16,4 @@ MonoBehaviour:
   _enemyprefab: {fileID: 8496298042882707132, guid: ae791cbc27f8ace4e88b51d6dc8f7503, type: 3}
   _enemyHp: 1000
   _enemyAttack: 20
+  _enemyBullet: {fileID: 7545331171300676547, guid: 314025f001149944683c32ee464a6e69, type: 3}

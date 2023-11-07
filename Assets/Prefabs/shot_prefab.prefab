@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5558226175928537038}
   - component: {fileID: 4299762683933844065}
   - component: {fileID: 1150303646854757478}
+  - component: {fileID: 1168661522445015794}
   m_Layer: 0
   m_Name: shot_prefab
   m_TagString: Untagged
@@ -132,3 +133,17 @@ CapsuleCollider:
   m_Height: 1.5579062
   m_Direction: 2
   m_Center: {x: -0.0915795, y: 0, z: 0.4074273}
+--- !u!114 &1168661522445015794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4299762683943986251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f495bc541e436b2488771de6856e4508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletAttack: 10
+  _bulletSeconds: 5

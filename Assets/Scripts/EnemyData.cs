@@ -9,6 +9,7 @@ public class EnemyData : ScriptableObject
     public GameObject EnemyPrefab => _enemyprefab;
     public float EnemyHp => _enemyHp;
     public float EnemyAttack => _enemyAttack;
+    public GameObject EnemyBullet => _enemyBullet;
 
     [Tooltip("エネミーの種類")]
     [SerializeField]
@@ -25,7 +26,12 @@ public class EnemyData : ScriptableObject
     [Tooltip("エネミーのベース攻撃力")]
     [SerializeField]
     private float _enemyAttack;
+
+    [Tooltip("エネミーの弾プレハブ")]
+    [SerializeField]
+    private GameObject _enemyBullet= default;
 }
+
 
 // エネミーの種類
 public enum EnemyType

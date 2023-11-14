@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class Enemy : MonoBehaviour
     [Tooltip("エネミーの体力")]
     [SerializeField]
     private float _hp;
+
+    [Tooltip("エネミーのHP表示用スライダー")]
+    [SerializeField]
+    private Slider _hpSlider;
 
     // 弾の発射用フラグ
     private bool _shotFlag;
@@ -43,24 +48,46 @@ public class Enemy : MonoBehaviour
         _hp = data.EnemyHp;
         _enemyData = data;
         _shotFlag = true;
+        _hpSlider.value = 1f;
     }
 
     // 弾が当たった時
     private void OnTriggerEnter(Collider other)
     {
-        float attack = other.GetComponent<Bullet>().BulletAttack;
-
-        _hp -= attack;
-
-        if (_hp <= 0)
+        // 弾の判定
+        if (other.gameObject.tag == "Bullet")
         {
-            gameObject.SetActive(false);
-        }
+            float attack = other.GetComponent<Bullet>().BulletAttack;
+
+            // HPのアップデート
+            _hp -= attack;
+            UpdateHPValue();
+
+            if (_hp <= 0)
+            {
+                gameObject.SetActive(false);
+            }
+        }  
+    }
+
+    /// <summary>
+    /// HP表示のアップデート
+    /// </summary>
+    private void UpdateHPValue()
+    {
+        // 現HP / MAXHPの計算結果をスライダーのValueに代入
+        _hpSlider.value = _hp / _enemyData.EnemyHp;
     }
 
     // 機体(プレイヤーなど)が当たった時
     private void OnCollisionEnter(Collision collision)
     {
+        // 接触がエネミーなら即リターンする
+        if (collision.gameObject.tag == "Enemy")
+        {
+            return;
+        }
+
         // 接触がプレイヤーの場合
         if (collision.gameObject.tag == "Player")
         {

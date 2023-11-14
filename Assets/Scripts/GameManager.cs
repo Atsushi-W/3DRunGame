@@ -12,7 +12,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void CreateEnemy(int num)
     {
         // ‰¼‚Ìƒ|ƒWƒVƒ‡ƒ“
-        Vector3 pos = new Vector3(0, 0, 130);
+        Vector3 pos = new Vector3(Random.Range(-20,20), 0, 130);
 
         EnemyObjectPool.Instance.GetEnemyObject(pos, enemyDatas[num]);
     }

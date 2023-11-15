@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -19,9 +20,18 @@ public class Player : MonoBehaviour
     [Tooltip("弾の威力")]
     [SerializeField]
     private float _bulletAttack;
+    [Tooltip("機体の現HP")]
+    [SerializeField]
+    private float _hp;
+    [Tooltip("機体のMAXHP")]
+    [SerializeField]
+    private float _maxHp;
     [Tooltip("機体のスピード")]
     [SerializeField]
     private float _speed;
+    [Tooltip("HP表示用スライダー")]
+    [SerializeField]
+    private Slider _hpSlider;
 
     private MeshFilter _meshFilter;
     private MeshRenderer _meshRenderer;
@@ -56,11 +66,21 @@ public class Player : MonoBehaviour
         // 揺れ続けるのを防ぐためにangularDragをある程度大きめの値にする
         _rigidbody.angularDrag = 20.0f;
 
+        // Initilize
+        _hp = _maxHp;
+        _hpSlider.value = 1f;
+
         _shotFlag = true;
     }
 
     private void Update()
     {
+        // 体力が0以下ならゲームオーバー(機体消失)
+        if (_hp <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+
         // キー入力から横方向の値取得
         float x = Input.GetAxisRaw("Horizontal");
 
@@ -132,4 +152,50 @@ public class Player : MonoBehaviour
         _shotFlag = true;
     }
 
+    /// <summary>
+    /// HP表示のアップデート
+    /// </summary>
+    private void UpdateHPValue()
+    {
+        // 現HP / MAXHPの計算結果をスライダーのValueに代入
+        _hpSlider.value = _hp / _maxHp;
+    }
+
+    /// <summary>
+    /// エネミーとの接触時
+    /// </summary>
+    /// <param name="collision"></param>
+    private void OnCollisionEnter(Collision collision)
+    {
+        // 接触がエネミーであれば
+        if (collision.gameObject.tag == "Enemy")
+        {
+            // TODO:体力処理を入れる
+            Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            _hp -= enemy.Hp;
+            UpdateHPValue();
+        }
+    }
+
+    /// <summary>
+    /// 弾に当たった時
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnTriggerEnter(Collider other)
+    {
+        // 弾の判定
+        if (other.gameObject.tag == "EnemyBullet")
+        {
+            float attack = other.GetComponent<Bullet>().BulletAttack;
+
+            // HPのアップデート
+            _hp -= attack;
+            UpdateHPValue();
+
+            if (_hp <= 0)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+    }
 }

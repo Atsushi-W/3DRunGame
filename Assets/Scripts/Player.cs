@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public GameObject Bullet => _bullet;
     public float BulletDelay => _bulletDelay;
     public float BulletAttack => _bulletAttack;
+    public float BulletSeconds => _bulletSeconds;
     public float Speed => _speed;
 
     [Tooltip("機体から射出する弾")]
@@ -20,6 +21,9 @@ public class Player : MonoBehaviour
     [Tooltip("弾の威力")]
     [SerializeField]
     private float _bulletAttack;
+    [Tooltip("弾の持続時間")]
+    [SerializeField]
+    private float _bulletSeconds;
     [Tooltip("機体の現HP")]
     [SerializeField]
     private float _hp;
@@ -53,6 +57,9 @@ public class Player : MonoBehaviour
     // 現在の機体のモード
     public UnitType UnitType = UnitType.White;
 
+    // 弾のデータ
+    private Bullet _playerBullet;
+
     // 機体データ : Element0からWhite,Red,Blue,Yellow
     public UnitData[] unitDatas;
 
@@ -69,6 +76,8 @@ public class Player : MonoBehaviour
         // Initilize
         _hp = _maxHp;
         _hpSlider.value = 1f;
+        _playerBullet = _bullet.GetComponent<Bullet>();
+        _bulletSeconds = _playerBullet.BulletSeconds;
 
         _shotFlag = true;
     }

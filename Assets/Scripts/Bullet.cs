@@ -32,6 +32,11 @@ public class Bullet : MonoBehaviour
         _bulletAttack = power;
     }
 
+    public void UpdateBulletSeconds(float seconds)
+    {
+        _bulletSeconds = seconds;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         gameObject.SetActive(false);

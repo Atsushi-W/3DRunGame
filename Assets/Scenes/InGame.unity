@@ -613,8 +613,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 234511191}
+  - component: {fileID: 234511192}
   m_Layer: 0
-  m_Name: EnemySponer
+  m_Name: EnemySpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -635,6 +636,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &234511192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234511190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515c6b197d3ae0c41b5feb000c95d5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mobWave: {fileID: 11400000, guid: dedd1964e74c9814cbd4cfa63221ad5a, type: 2}
+  _middleBossWave: {fileID: 11400000, guid: e76063da854c52944bc685707f072edf, type: 2}
+  _bossWave: {fileID: 11400000, guid: c96ef7a4c513b464d9ba3b3478e5b9be, type: 2}
+  _spawnFlag: 0
 --- !u!1 &268251519
 GameObject:
   m_ObjectHideFlags: 0

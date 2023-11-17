@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+public class Player : SingletonMonoBehaviour<Player>
 {
     public GameObject Bullet => _bullet;
     public float BulletDelay => _bulletDelay;
@@ -63,8 +63,10 @@ public class Player : MonoBehaviour
     // 機体データ : Element0からWhite,Red,Blue,Yellow
     public UnitData[] unitDatas;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _meshFilter = GetComponent<MeshFilter>();
         _meshRenderer = GetComponent<MeshRenderer>();
         _collider = GetComponent<Collider>();
@@ -148,6 +150,53 @@ public class Player : MonoBehaviour
         Material[] materials = _meshRenderer.materials;
         materials[0] = data.Material;
         _meshRenderer.materials = materials;
+    }
+
+    /// <summary>
+    /// 弾発射間隔変更
+    /// </summary>
+    /// <param name="type">減らすディレイ</param>
+    public void UpdateBulletDelay(float bulletDelay)
+    {
+        _bulletDelay -= bulletDelay;
+    }
+
+    /// <summary>
+    /// 弾威力変更
+    /// </summary>
+    /// <param name="type">増加威力</param>
+    public void UpdateBulletAttack(float bulletAttack)
+    {
+        _bulletAttack += bulletAttack;
+    }
+
+    /// <summary>
+    /// 弾の持続時間変更
+    /// </summary>
+    /// <param name="type">増加持続時間</param>
+    public void UpdateBulletSeconds(float bulletSeconds)
+    {
+        _bulletSeconds += bulletSeconds;
+    }
+
+    /// <summary>
+    /// 体力変更
+    /// </summary>
+    /// <param name="type">増加体力</param>
+    public void UpdateMaxHelth(float helth)
+    {
+        _maxHp += helth;
+        _hp += helth;
+        UpdateHPValue();
+    }
+
+    /// <summary>
+    /// スピード変更
+    /// </summary>
+    /// <param name="type">増加スピード</param>
+    public void UpdateSpeed(float speed)
+    {
+        _speed += speed;
     }
 
     /// <summary>

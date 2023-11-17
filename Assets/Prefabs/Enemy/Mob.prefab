@@ -526,3 +526,9 @@ MonoBehaviour:
   _enemyData: {fileID: 0}
   _hp: 100
   _hpSlider: {fileID: 880895301}
+  _ItemList:
+  - {fileID: 4126990255456256470, guid: 67155abff1c860e4381a0d0587285a4c, type: 3}
+  - {fileID: 2045355741726682199, guid: 88c22c75547783142b22d69ebbf19fd5, type: 3}
+  - {fileID: 6628614609498765937, guid: e89aa1e36a1ef8b4c9fe19232a346c18, type: 3}
+  - {fileID: 2215398783136717929, guid: d13c0a98f8833de4695b7219854a2380, type: 3}
+  - {fileID: 2986964465555340693, guid: 86dda0b4d611e7749afe3612a7c5fab0, type: 3}

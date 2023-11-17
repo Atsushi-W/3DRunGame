@@ -22,6 +22,10 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Slider _hpSlider;
 
+    [Tooltip("Mob用アイテムリスト")]
+    [SerializeField]
+    private GameObject[] _ItemList;
+
     // 弾の発射用フラグ
     private bool _shotFlag;
 
@@ -65,6 +69,14 @@ public class Enemy : MonoBehaviour
 
             if (_hp <= 0)
             {
+                if (_enemyData.EnemyType == EnemyType.Mob)
+                {
+                    GameObject go = Instantiate(_ItemList[Random.Range(0,_ItemList.Length)], gameObject.transform.position, Quaternion.identity);
+                    Quaternion _rot = Quaternion.Euler(0, 180, 0);
+                    Quaternion _q = go.transform.rotation;
+                    go.transform.rotation = _q * _rot;
+                }
+
                 gameObject.SetActive(false);
             }
         }  
@@ -91,11 +103,16 @@ public class Enemy : MonoBehaviour
         // 接触がプレイヤーの場合
         if (collision.gameObject.tag == "Player")
         {
-            // TODO:体力処理を入れる
+            if (_enemyData.EnemyType == EnemyType.Mob)
+            {
+                GameObject go = Instantiate(_ItemList[Random.Range(0, _ItemList.Length)], gameObject.transform.position, Quaternion.identity);
+                Quaternion _rot = Quaternion.Euler(0, 180, 0);
+                Quaternion _q = go.transform.rotation;
+                go.transform.rotation = _q * _rot;
+            }
+            // 非表示にする
+            gameObject.SetActive(false);
         }
-
-        // 非表示にする
-        gameObject.SetActive(false);
     }
 
     /// <summary>

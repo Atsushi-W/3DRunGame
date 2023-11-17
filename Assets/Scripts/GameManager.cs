@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     public EnemyData[] enemyDatas;
-    
+
     /// <summary>
     /// エネミー生成テスト
     /// </summary>
@@ -19,4 +19,5 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
 
         SpawnManager.Instance.Spawn((EnemyType)Enum.ToObject(typeof(EnemyType), num));
     }
+
 }

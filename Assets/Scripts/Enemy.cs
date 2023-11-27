@@ -77,6 +77,11 @@ public class Enemy : MonoBehaviour
                     go.transform.rotation = _q * _rot;
                 }
 
+                if (_enemyData.EnemyType == EnemyType.MiddleBoss || _enemyData.EnemyType == EnemyType.BigBoss)
+                {
+                    PawerUpManager.Instance.SelectPanelActive();
+                }
+
                 gameObject.SetActive(false);
             }
         }  

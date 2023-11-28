@@ -16,7 +16,7 @@ public class PawerUpManager : SingletonMonoBehaviour<PawerUpManager>
     // 機体選択フラグ管理用
     private bool _unitflag;
     // パワーアップアイテムUI総数
-    private List<GameObject> _powerUpPanelChildren;
+    private List<GameObject> _powerUpPanelChildren = new List<GameObject>();
 
     protected override void Awake()
     {

@@ -115,6 +115,11 @@ public class Enemy : MonoBehaviour
                 Quaternion _q = go.transform.rotation;
                 go.transform.rotation = _q * _rot;
             }
+
+            if (_enemyData.EnemyType == EnemyType.MiddleBoss || _enemyData.EnemyType == EnemyType.BigBoss)
+            {
+                PawerUpManager.Instance.SelectPanelActive();
+            }
             // ”ñ•\Ž¦‚É‚·‚é
             gameObject.SetActive(false);
         }

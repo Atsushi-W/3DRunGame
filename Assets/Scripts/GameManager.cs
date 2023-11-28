@@ -5,7 +5,16 @@ using UnityEngine;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
-    public EnemyData[] enemyDatas;
+    public EnemyType[] EnemyWave;
+
+    // 現Waveカウント
+    private int _count;
+
+    private void Start()
+    {
+        _count = 0;
+        WaveStart();
+    }
 
     /// <summary>
     /// エネミー生成テスト
@@ -18,6 +27,22 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         //EnemyObjectPool.Instance.GetEnemyObject(pos, enemyDatas[num]);
 
         SpawnManager.Instance.Spawn((EnemyType)Enum.ToObject(typeof(EnemyType), num));
+    }
+
+
+    /// <summary>
+    /// Waveのスタート
+    /// </summary>
+    public void WaveStart()
+    {
+        // カウントがWaveリストの上限を超えてた場合はリセット
+        if (_count > EnemyWave.Length)
+        {
+            _count = 0;
+        }
+
+        SpawnManager.Instance.Spawn(EnemyWave[_count]);
+        _count++;
     }
 
 }

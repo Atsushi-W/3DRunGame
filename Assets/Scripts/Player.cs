@@ -90,6 +90,7 @@ public class Player : SingletonMonoBehaviour<Player>
         if (_hp <= 0)
         {
             gameObject.SetActive(false);
+            Debug.Log("Game Over");
         }
 
         // ƒL[“ü—Í‚©‚ç‰¡•ûŒü‚Ì’lŽæ“¾

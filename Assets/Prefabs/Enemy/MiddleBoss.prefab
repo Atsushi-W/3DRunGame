@@ -509,7 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ea04be134ad8ee408db3514c1b98f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
 --- !u!114 &4110203780012009028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,5 +524,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletpos: 40
   _enemyData: {fileID: 0}
-  _hp: 1000
+  _hp: 200
   _hpSlider: {fileID: 4154117693260112415}
+  _ItemList: []

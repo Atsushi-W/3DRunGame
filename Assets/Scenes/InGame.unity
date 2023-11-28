@@ -380,6 +380,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 234511192}
+        m_TargetAssemblyTypeName: SpawnManager, Assembly-CSharp
+        m_MethodName: SetSpawnFlag
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &141746122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1118,7 +1130,7 @@ MonoBehaviour:
   _mobWave: {fileID: 11400000, guid: dedd1964e74c9814cbd4cfa63221ad5a, type: 2}
   _middleBossWave: {fileID: 11400000, guid: e76063da854c52944bc685707f072edf, type: 2}
   _bossWave: {fileID: 11400000, guid: c96ef7a4c513b464d9ba3b3478e5b9be, type: 2}
-  _spawnFlag: 0
+  _spawnFlag: 1
 --- !u!1 &268251519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,7 +1680,6 @@ MonoBehaviour:
   _unitPanel: {fileID: 432168589}
   _powerUpPanel: {fileID: 943138802}
   _ItemCount: 3
-  _powerUpPanelChildren: []
 --- !u!224 &507640192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1852,10 +1863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d366631107467094f8fb3c6f7d3553eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDatas:
-  - {fileID: 11400000, guid: 78f1c72911b66404d86a2efabdfc73db, type: 2}
-  - {fileID: 11400000, guid: e2a019a07e289e641a21094a6951d230, type: 2}
-  - {fileID: 11400000, guid: 580f3f0607adf334b860baeca03972b4, type: 2}
+  EnemyWave: 000000000000000001000000000000000000000001000000000000000000000002000000
 --- !u!4 &570555356
 Transform:
   m_ObjectHideFlags: 0
@@ -3168,7 +3176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &961695353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3422,7 +3430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1054577906
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5384,7 +5392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1906390227
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6015,11 +6023,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1239154307, guid: 95b99179ca9c9c54b89cb6421d8a23b9, type: 3}
       propertyPath: _hp
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1239154307, guid: 95b99179ca9c9c54b89cb6421d8a23b9, type: 3}
       propertyPath: _maxHp
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1239154307, guid: 95b99179ca9c9c54b89cb6421d8a23b9, type: 3}
       propertyPath: _speed
@@ -6043,7 +6051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1239154307, guid: 95b99179ca9c9c54b89cb6421d8a23b9, type: 3}
       propertyPath: _bulletAttack
-      value: 5000
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5790254339155180332, guid: 95b99179ca9c9c54b89cb6421d8a23b9, type: 3}
       propertyPath: m_Name

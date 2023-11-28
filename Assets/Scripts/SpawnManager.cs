@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : SingletonMonoBehaviour<SpawnManager>
 {
-    //public List<WaveData> WaveList => _waveList;
+    public bool SpawnFlag => _spawnFlag;
 
     [Tooltip("MobWave")]
     [SerializeField]
@@ -22,9 +22,9 @@ public class SpawnManager : SingletonMonoBehaviour<SpawnManager>
     [SerializeField]
     private bool _spawnFlag;
 
-    private void Start()
+    public void SetSpawnFlag(bool flag)
     {
-        _spawnFlag = false;
+        _spawnFlag = flag;
     }
 
     public bool Spawn(EnemyType enemyType)
@@ -50,17 +50,26 @@ public class SpawnManager : SingletonMonoBehaviour<SpawnManager>
                 {
                     pos = new Vector3(Random.Range(-20, 20), 0, 130);
                     EnemyObjectPool.Instance.GetEnemyObject(pos, _mobWave.EnemyList[i]);
-                    yield return new WaitForSeconds(10f);
+                    yield return new WaitForSeconds(7.5f);
                 }
+                _spawnFlag = true;
+                GameManager.Instance.WaveStart();
                 break;
             case EnemyType.MiddleBoss:
                 EnemyObjectPool.Instance.GetEnemyObject(pos, _middleBossWave.EnemyList[0]);
                 yield return new WaitForSeconds(10f);
+                //_spawnFlag = true;
+                GameManager.Instance.WaveStart();
                 break;
             case EnemyType.BigBoss:
                 EnemyObjectPool.Instance.GetEnemyObject(pos, _bossWave.EnemyList[0]);
                 yield return new WaitForSeconds(10f);
+                // ラストボスは倒されたら_spawnFlagを入れる
+                //_spawnFlag = true;
+                //GameManager.Instance.WaveStart();
                 break;
         }
+
+
     }
 }

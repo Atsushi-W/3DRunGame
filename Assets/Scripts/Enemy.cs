@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
         _hpSlider.value = 1f;
     }
 
-    // ’e‚ª“–‚½‚Á‚½Žž
+    // ’e‚È‚Ç‚ª“–‚½‚Á‚½Žž
     private void OnTriggerEnter(Collider other)
     {
         // ’e‚Ì”»’è
@@ -84,7 +84,13 @@ public class Enemy : MonoBehaviour
 
                 gameObject.SetActive(false);
             }
-        }  
+        }
+
+        // •Ç‚É“–‚½‚Á‚½Žž
+        if (other.gameObject.tag == "Wall")
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     /// <summary>

@@ -151,6 +151,28 @@ public class Player : SingletonMonoBehaviour<Player>
         Material[] materials = _meshRenderer.materials;
         materials[0] = data.Material;
         _meshRenderer.materials = materials;
+        // ’e‚Ì•ÏX
+        _bullet = data.Bullet;
+
+        // ‹@‘Ì–ˆ‚Ìƒpƒ‰ƒ[ƒ^’²®
+        switch (type)
+        {
+            case UnitType.Red:
+                // ’e‚ÌˆĞ—Í‚ğ”{A”­ËŠÔŠu‚ğ‘‰Á
+                _bulletAttack *= 2.0f;
+                _bulletDelay += _bulletDelay / 3.0f;
+                break;
+            case UnitType.Blue:
+                // ’e‚ÌˆĞ—Í‚ğ0.5”{A”­ËŠÔŠu‚ğ’Z‚­
+                _bulletAttack *= 0.5f;
+                _bulletDelay *= 0.25f;
+                break;
+            case UnitType.Yellow:
+                // ’e‚ÌˆĞ—Í‚ğ1.1”{A”­ËŠÔŠu‚ğ­X’Z‚­
+                _bulletAttack *= 1.1f;
+                _bulletDelay *= 0.95f;
+                break;
+        }
     }
 
     /// <summary>

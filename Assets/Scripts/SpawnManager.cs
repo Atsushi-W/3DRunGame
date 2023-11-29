@@ -58,13 +58,14 @@ public class SpawnManager : SingletonMonoBehaviour<SpawnManager>
             case EnemyType.MiddleBoss:
                 EnemyObjectPool.Instance.GetEnemyObject(pos, _middleBossWave.EnemyList[0]);
                 yield return new WaitForSeconds(10f);
+                // パワーアップが選択されてから_spawnFlagを入れる
                 //_spawnFlag = true;
-                GameManager.Instance.WaveStart();
+                //GameManager.Instance.WaveStart();
                 break;
             case EnemyType.BigBoss:
                 EnemyObjectPool.Instance.GetEnemyObject(pos, _bossWave.EnemyList[0]);
                 yield return new WaitForSeconds(10f);
-                // ラストボスは倒されたら_spawnFlagを入れる
+                // パワーアップが選択されてから_spawnFlagを入れる
                 //_spawnFlag = true;
                 //GameManager.Instance.WaveStart();
                 break;

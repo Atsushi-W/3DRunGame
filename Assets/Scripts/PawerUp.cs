@@ -43,4 +43,14 @@ public class PawerUp : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // •Ç‚É“–‚½‚Á‚½Žž
+        if (other.gameObject.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
+

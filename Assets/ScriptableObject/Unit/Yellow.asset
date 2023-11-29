@@ -15,4 +15,4 @@ MonoBehaviour:
   _unitType: 3
   _mesh: {fileID: -443936529078758090, guid: f7af603aac7d7734dafa2b05c8b7fa60, type: 3}
   _material: {fileID: 2100000, guid: 248508f42dcd00049925f29941b22e00, type: 2}
-  _bullet: {fileID: 4299762683943986251, guid: d1a3b21b96ceeea498397920956aca6b, type: 3}
+  _bullet: {fileID: 923647257284118252, guid: 16ed86dcafd4a184c83be05bebc6be2e, type: 3}

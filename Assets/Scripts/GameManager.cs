@@ -35,6 +35,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     /// </summary>
     public void WaveStart()
     {
+        if (!SpawnManager.Instance.SpawnFlag)
+        {
+            SpawnManager.Instance.SetSpawnFlag(true);
+        }
+
         // カウントがWaveリストの上限を超えてた場合はリセット
         if (_count > EnemyWave.Length)
         {
